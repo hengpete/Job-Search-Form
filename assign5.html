@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Sign-Up</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/assign5.css" />
+    <script src="js/assign5.js"></script>
+    <meta charset="UTF-8">
+</head>
+<!--input elements require type, name and value attributes-->
+<!--Select elements give options, datalist elements provide suggestions-->
+
+<body>
+    <div class="container">
+        <div class="row">
+            <header class="col-md-6 col-md-offset-3">
+                JobSearch<span>.com</span>
+            </header>
+        </div>
+        <div class="row">
+            <section class="col-md-6 col-md-offset-3">
+                <h3>Create Your Account</h3>
+                <h5><sup>*</sup> Required information</h5>
+            </section>
+        </div>
+        <div class="row">
+            <main class="col-md-6 col-md-offset-3">
+                <form name="myForm" id="signup" method="post" action="https://httpbin.org/post" enctype="multipart/form-data" onsubmit="return validateFormOnSubmit();">
+                    <fieldset name="basic" id="basic">
+                        <legend class="major" id="info">Basic Information</legend>
+                        <label for="email">Email <sup>*</sup></label>
+                        <input type="email" name="email" id="email" autofocus required/><br>
+                        <label for="password">Password <sup>*</sup></label>
+                        <input type="password" name="password" id="password" onchange="validatePassword(this, 'password-error');" required/><br>
+                        <div class="error" id="password-error"></div>
+                        <label for="retype">Retype Password <sup>*</sup></label>
+                        <input type="password" name="retype" id="retype" onchange="validatePassword(this, 'retype-error');" required/><br>
+                        <div class="error" id="retype-error"></div>
+                        <label for="fname">First Name <sup>*</sup></label>
+                        <input type="text" name="fname" id="fname" onchange="validateName(this, 'fname-error');" required/><br>
+                        <div class="error" id="fname-error"></div>
+                        <label for="lname">Last Name <sup>*</sup></label>
+                        <input type="text" name="lname" id="lname" onchange="validateName(this, 'lname-error');" required/><br>
+                        <div class="error" id="lname-error"></div>
+                        <label for="tel">Phone Number <sup>*</sup></label>
+                        <input type="tel" name="tel" id="tel" placeholder="999-999-9999" onchange="validatePhone(this);" required/><br>
+                        <div class="error" id="tel-error"></div>
+                        <label for="address">Address <sup>*</sup></label>
+                        <input type="text" name="address" id="address" required/><br>
+                        <label for="city">City <sup>*</sup></label>
+                        <input type="text" name="city" id="city" required/><br>
+                        <label for="province">Province <sup>*</sup></label>
+                        <select name="province" id="province" required>
+                            <option value="" id="0"> - Select - </option>
+                            <optgroup label="Province" id="14">
+                                <option value="ab" id="1" selected>Alberta</option>
+                                <option value="bc" id="2">British Columbia</option>
+                                <option value="mb" id="3">Manitoba</option>
+                                <option value="nb" id="4">New Brunswick</option>
+                                <option value="nl" id="5">Newfoundland and Labrador</option>
+                                <option value="ns" id="6">Nova Scotia</option>
+                                <option value="on" id="7">Ontario</option>
+                                <option value="pe" id="8">Prince Edward Island</option>
+                                <option value="qc" id="9">Quebec</option>
+                                <option value="sk" id="10">Saskatchewan</option>
+                            </optgroup>
+                            <optgroup label="Territories" id="15">
+                                <option value="nt" id="11">Northwest Territories</option>
+                                <option value="nu" id="12">Nunavut</option>
+                                <option value="yt" id="13">Yukon</option>
+                            </optgroup>
+                        </select><br>
+                        <label for="country">Country <sup>*</sup></label>
+                        <input type="text" name="country" list="countries" id="country" required/>
+                        <datalist id="countries">
+                            <option value="ca" id="20">Canada</option>
+                            <option value="us" id="21">The United States</option>
+                            <option value="au" id="22">Australia</option>
+                            <option value="ch" id="23">China</option>
+                            <option value="ru" id="24">Russia</option>
+                        </datalist>
+                    </fieldset>
+                    <!--End of Basic Information Section-->
+                    <fieldset name="eduat" id="educat">
+                        <legend class="major" id="educatio">Education</legend>
+                        <label for="school">School <sup>*</sup></label>
+                        <input type="text" name="school" id="school" required/><br>
+                        <label for="program">Program <sup>*</sup></label>
+                        <input type="text" name="program" id="program" required/><br>
+                        <label for="education">Education Level <sup>*</sup></label>
+                        <select name="education" id="education" required>
+                            <option value="" id="30">-select-</option>
+                            <option value="TD" id="31">Technical Diploma</option>
+                            <option value="CD" id="32">College Diploma</option>
+                            <option value="BD" id="33">Bachelor's Degree</option>
+                            <option value="MD" id="34">Master's Degree</option>
+                            <option value="O" id="35">Others</option>
+                        </select>
+                        <fieldset class="minor" name="stat" id="stat">
+                            <legend id="status">Education Status</legend>
+                            <input type="radio" name="edu" value="grad" id="grad" onclick="validateEducation(form.edu);" />
+                            <label for="grad"> Graduate </label><br>
+                            <input type="radio" name="edu" value="current" id="current" onclick="validateEducation(form.edu);" />
+                            <label for="current"> Currently Enrolled </label><br>
+                            <input type="radio" name="edu" value="dng" id="dng" onclick="validateEducation(form.edu);" />
+                            <label for="dng"> Did Not Graduate</label><br>
+                        </fieldset><br><br>
+                        <div class="error" id="edu-error"></div>
+                        <label for="date">Graduation Date &nbsp;</label>
+                        <input type="text" name="date" id="date" /><br>
+                    </fieldset>
+                    <!--End of Education Section-->
+
+                    <fieldset name="wok" id="wok">
+                        <legend class="major" id="work">Work Experience</legend>
+
+                        <label for="Employer"> Employer: &nbsp;</label>
+                        <input type="text" name="employer" id="Employer" /><br>
+                        <label for="title">Job Title: &nbsp;</label>
+                        <input type="text" name="title" id="title" /><br>
+                        <label for="duty">Job Duty: &nbsp;</label>
+                        <textarea name="duty" id="duty"></textarea><br>
+                        <label for="year">Worked Year: &nbsp;</label>
+                        <input type="number" name="year" id="year" min="1" max="20" /><br>
+                    </fieldset>
+                    <!--End of Work Experience-->
+                    <fieldset name="att" id="att">
+                        <legend class="major" id="attachments">Attachments</legend>
+                        <label for="attach">Attachments: </label>
+                        <input type="file" name="attach" id="attach" multiple/><br>
+                    </fieldset>
+                    <!--End of Attachment-->
+                    <div class="buttons" id="buttons">
+                        <input type="reset" name="reset" id="40" value="Reset" />&nbsp; &nbsp; &nbsp;
+                        <input type="submit" name="apply" id="41" value="Apply" />
+                    </div>
+                    <br>
+                    <br>
+                </form>
+                <!--End of Form-->
+            </main>
+            <!--End of col-md-10 col-md-offset-1-->
+        </div>
+        <!--End of row-->
+    </div>
+    <!--End of container-->
+</body>
+
+</html>
